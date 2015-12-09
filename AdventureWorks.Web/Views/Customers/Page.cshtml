@@ -1,0 +1,58 @@
+﻿@model AdventureWorks.ViewModel.PageViewModel<AdventureWorks.DomainModel.Customer>
+
+<h2>Customers</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            CustomerID
+        </th>
+        <th>
+            Title
+        </th>
+        <th>
+            First Name
+        </th>
+        <th>
+            Last Name
+        </th>
+        <th>
+            Company Name
+        </th>
+        <th>
+            Sales Person
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Items) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalesPerson)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.id }) |
+            @Html.ActionLink("SubTotals", "SubTotals", new { customerID = item.CustomerID, target = "_blank" })
+        </td>
+    </tr>
+}
+</table>
+@Html.ActionLink("Next Page", "Page", new { Continuation = Model.Continuation })

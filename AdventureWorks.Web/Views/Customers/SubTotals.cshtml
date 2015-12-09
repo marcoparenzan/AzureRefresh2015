@@ -1,0 +1,30 @@
+﻿@model AdventureWorks.ViewModel.PageViewModel<AdventureWorks.ViewModel.SubTotals>
+
+<h2>Subtotals per Customer</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            CustomerId
+        </th>
+        <th>
+            Sub Total
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Items) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubTotal)
+        </td>
+    </tr>
+}
+</table>
+@Html.ActionLink("Next Page", "Page", new { Continuation = Model.Continuation })

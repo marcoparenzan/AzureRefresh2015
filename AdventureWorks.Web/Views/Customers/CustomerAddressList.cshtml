@@ -1,0 +1,31 @@
+﻿@model IEnumerable<AdventureWorks.DomainModel.CustomerAddress>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AddressType)
+        </th>
+        <th>
+            Address
+        </th>
+        <th>    </th>
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressType)
+        </td>
+        <td>
+            @Html.Partial("AddressView", item.Address)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
